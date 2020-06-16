@@ -13,5 +13,16 @@ import pandas as pd
 
 #Load data from csv file and create a pandas dataframe
 
-filepath = 'E:\Data Science Projects\1. Iris Dataset - Classification\data\raw\iris.csv'
-df_table = pd.read_csv(filepath, header=0, index_col=None)
+
+
+def f_loadData():
+    filepath = 'E:/Data Science Projects/1. Iris Dataset - Classification/data/raw/iris.csv'
+    global df_raw
+    df_raw = pd.read_csv(filepath, header='infer', index_col=None)
+
+if __name__ == '__main__':
+    print('Make_Dataset script started')
+    f_loadData()
+    print(df_raw.head())
+    
+    
