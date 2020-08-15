@@ -1,0 +1,179 @@
+Project: Iris Classification
+Author: Aakriti Sinha
+Last run on  2020-08-14 06:06:30.562498
+
+Raw Dataset Snapshot
+   sepal_length  sepal_width  petal_length  petal_width species
+0           5.1          3.5           1.4          0.2  setosa
+1           4.9          3.0           1.4          0.2  setosa
+2           4.7          3.2           1.3          0.2  setosa
+3           4.6          3.1           1.5          0.2  setosa
+4           5.0          3.6           1.4          0.2  setosa 
+
+
+Raw Data Description
+       sepal_length  sepal_width  petal_length  petal_width
+count    150.000000   150.000000    150.000000   150.000000
+mean       5.843333     3.054000      3.758667     1.198667
+std        0.828066     0.433594      1.764420     0.763161
+min        4.300000     2.000000      1.000000     0.100000
+25%        5.100000     2.800000      1.600000     0.300000
+50%        5.800000     3.000000      4.350000     1.300000
+75%        6.400000     3.300000      5.100000     1.800000
+max        7.900000     4.400000      6.900000     2.500000 
+
+List of categories in categorical variable
+['setosa' 'versicolor' 'virginica'] 
+
+
+
+Clean Dataset Snapshot
+   sepal_length  sepal_width  petal_length  petal_width  species
+0           5.1          3.5           1.4          0.2        0
+1           4.9          3.0           1.4          0.2        0
+2           4.7          3.2           1.3          0.2        0
+3           4.6          3.1           1.5          0.2        0
+4           5.0          3.6           1.4          0.2        0 
+
+
+Clean Data Description
+       sepal_length  sepal_width  petal_length  petal_width     species
+count    150.000000   150.000000    150.000000   150.000000  150.000000
+mean       5.843333     3.054000      3.758667     1.198667    1.000000
+std        0.828066     0.433594      1.764420     0.763161    0.819232
+min        4.300000     2.000000      1.000000     0.100000    0.000000
+25%        5.100000     2.800000      1.600000     0.300000    0.000000
+50%        5.800000     3.000000      4.350000     1.300000    1.000000
+75%        6.400000     3.300000      5.100000     1.800000    2.000000
+max        7.900000     4.400000      6.900000     2.500000    2.000000 
+
+List of categories in categorical variable
+[0 1 2] 
+
+Minimum Sample Size: 25.525
+Sample size is sufficient for effect size of 0.8 and power of 0.8.
+
+
+Feature Scaling: Centering, Standardizing and Normalizing
+
+Scaled Dataset Snapshot
+   species  sepal_length_std  sepal_width_std  petal_length_std  \
+0        0         -0.897674         1.028611         -1.336794   
+1        0         -1.139200        -0.124540         -1.336794   
+2        0         -1.380727         0.336720         -1.393470   
+3        0         -1.501490         0.106090         -1.280118   
+4        0         -1.018437         1.259242         -1.336794   
+
+   petal_width_std  
+0        -1.308593  
+1        -1.308593  
+2        -1.308593  
+3        -1.308593  
+4        -1.308593   
+
+
+Scaled Data Description
+          species  sepal_length_std  sepal_width_std  petal_length_std  \
+count  150.000000      1.500000e+02     1.500000e+02      1.500000e+02   
+mean     1.000000     -1.451617e-15    -1.740737e-15     -1.959174e-15   
+std      0.819232      1.000000e+00     1.000000e+00      1.000000e+00   
+min      0.000000     -1.863780e+00    -2.430844e+00     -1.563497e+00   
+25%      0.000000     -8.976739e-01    -5.858010e-01     -1.223442e+00   
+50%      1.000000     -5.233076e-02    -1.245404e-01      3.351431e-01   
+75%      2.000000      6.722490e-01     5.673506e-01      7.602119e-01   
+max      2.000000      2.483699e+00     3.104284e+00      1.780377e+00   
+
+       petal_width_std  
+count     1.500000e+02  
+mean     -4.988602e-16  
+std       1.000000e+00  
+min      -1.439627e+00  
+25%      -1.177559e+00  
+50%       1.327811e-01  
+75%       7.879511e-01  
+max       1.705189e+00   
+
+List of categories in categorical variable
+[0 1 2] 
+
+
+Correlation Matrix
+                   species  sepal_length_std  sepal_width_std  \
+species           1.000000          0.782561        -0.419446   
+sepal_length_std  0.782561          1.000000        -0.109369   
+sepal_width_std  -0.419446         -0.109369         1.000000   
+petal_length_std  0.949043          0.871754        -0.420516   
+petal_width_std   0.956464          0.817954        -0.356544   
+
+                  petal_length_std  petal_width_std  
+species                   0.949043         0.956464  
+sepal_length_std          0.871754         0.817954  
+sepal_width_std          -0.420516        -0.356544  
+petal_length_std          1.000000         0.962757  
+petal_width_std           0.962757         1.000000  
+
+Correlation Heatmap image file saved
+
+Scatterplot image file saved
+
+**MULTICOLLINEARITY FOUND**
+
+FACTOR ANALYSIS
+
+Kaiser-Meyer-Olkin (KMO) test: 
+KMO =  0.7171386186601529
+KMO is adequate. Data is suitable for factor analysis.
+
+Eigen values: 
+                           0         1         2    3    4
+Unnamed: 0       -43.288693 -0.078559 -0.005955 -0.0 -0.0
+sepal_length_std  -0.715367  0.453142 -0.069564 -0.0 -0.0
+sepal_width_std    0.396511  0.043503 -0.296332  0.0  0.0
+petal_length_std  -0.880657  0.337381  0.035814 -0.0  0.0
+petal_width_std   -0.897482  0.294267  0.016136  0.0 -0.0
+
+Factor Covariance: 
+ [[ 1.87491660e+03  3.09267127e+01 -1.71665595e+01  3.80956379e+01
+   3.88298458e+01]
+ [ 3.09267127e+01  9.93304348e-01 -3.50633263e-01  8.64976327e-01
+   8.24115109e-01]
+ [-1.71665595e+01 -3.50633263e-01  9.93378197e-01 -4.10198319e-01
+  -4.03197993e-01]
+ [ 3.80956379e+01  8.64976327e-01 -4.10198319e-01  9.93379821e-01
+   9.56035198e-01]
+ [ 3.88298458e+01  8.24115109e-01 -4.03197993e-01  9.56035198e-01
+   9.93311436e-01]]
+
+Selected Features Snapshot
+    Factor1   Factor2  species
+0  1.696689  0.479142        0
+1  1.676087  0.427803        0
+2  1.661892  0.259588        0
+3  1.629270  0.435984        0
+4  1.614079  0.295879        0 
+
+
+Selected Features Description
+            Factor1       Factor2     species
+count  1.500000e+02  1.500000e+02  150.000000
+mean   1.672736e-16 -2.930989e-16    1.000000
+std    1.003108e+00  9.934894e-01    0.819232
+min   -1.632583e+00 -1.944953e+00    0.000000
+25%   -8.777354e-01 -6.930867e-01    0.000000
+50%   -3.935782e-02 -4.700217e-02    1.000000
+75%    9.231918e-01  6.337177e-01    2.000000
+max    1.696689e+00  2.377384e+00    2.000000 
+
+List of categories in categorical variable
+[0 1 2] 
+
+
+Correlation Matrix
+              Factor1       Factor2   species
+Factor1  1.000000e+00 -5.233128e-14 -0.954841
+Factor2 -5.233128e-14  1.000000e+00  0.198952
+species -9.548414e-01  1.989523e-01  1.000000
+
+Correlation Heatmap image file saved
+
+Scatterplot image file saved
