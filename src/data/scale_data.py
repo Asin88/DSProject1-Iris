@@ -4,6 +4,11 @@ Created on Thu Aug 13 21:22:05 2020
 
 @author: AAKRITI
 """
+
+#Import modules
+from sklearn import preprocessing
+from data.clean_data import df_iris
+
 #Function to centre data
 def f_centreData():
     df_iris['sepal_length_ctr'] = df_iris.sepal_length - df_iris.sepal_length.mean()
@@ -22,9 +27,6 @@ def f_standardizeData():
 
 #Main function
 print('Scale_data script started')
-#Import modules
-from sklearn import preprocessing
-from data.clean_data import df_iris
 #Centre data 
 f_centreData()
 #Standardize data
@@ -33,4 +35,4 @@ f_standardizeData()
 preprocessing.normalize(df_iris)
 
 #Saving scaled data to new csv file
-df_iris.to_csv('E:/Data Science Projects/1. Iris Dataset - Classification/data/processed/iris_scaled.csv', encoding='utf-8')
+df_iris.to_csv('E:/Data Science Projects/1. Iris Dataset - Classification/data/processed/iris_scaled.csv', index = False, encoding='utf-8')

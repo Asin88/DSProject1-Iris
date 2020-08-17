@@ -7,7 +7,10 @@ Created on Fri Aug 14 04:11:24 2020
 
 #Script to perform factor analysis
 
-
+#Import modules
+import pandas as pd
+from statsmodels.stats.power import TTestIndPower
+from sklearn.decomposition import FactorAnalysis
         
 #Function to identify number of factors
 def f_noOfFactors(scree_image_name):
@@ -21,19 +24,11 @@ def f_factorAnalysis(num_factors):
     factor = FactorAnalysis(n_components=num_factors, random_state=101).fit(df_indep)
     covariances = factor.get_covariance()
     df_iris_scores = pd.DataFrame(factor.transform(df_indep))
-    print(df_iris_scores.columns)
     df_iris_scores.rename(columns={0:'Factor1',1:'Factor2'},inplace=True)
-    #Saving scores to new csv file
-    df_iris_scores.to_csv('E:/Data Science Projects/1. Iris Dataset - Classification/data/processed/iris_scores.csv', encoding='utf-8')
     return(covariances, df_iris_scores)
     
 #Main function
 print('factor_analysis script started')
-
-#IMport modules
-import pandas as pd
-from statsmodels.stats.power import TTestIndPower
-from sklearn.decomposition import FactorAnalysis
 
 filepath = 'E:/Data Science Projects/1. Iris Dataset - Classification/data/processed/iris_scaled.csv'
 df_iris_scaled = pd.read_csv(filepath, header='infer', index_col=None)
