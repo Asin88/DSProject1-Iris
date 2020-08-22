@@ -8,10 +8,16 @@ Created on Tue Jun 16 04:12:16 2020
 #Project 1: Iris Dataset - Classification Problem 
 #Script to clean data
 
+#Import modules
+import pandas as pd
+
 #Encode categorical variable
 def f_categoryEncoder():
+    #Integer encoding
     df_iris["species"] = df_iris["species"].astype('category')
     df_iris["species"] = df_iris["species"].cat.codes #Replace column data with numerical codes
+#    #One-hot encoding
+#    df_iris = pd.get_dummies(df_iris, columns = ['species'])
 
 #Handle missing data
 def f_missingData():
