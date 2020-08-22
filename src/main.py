@@ -141,6 +141,9 @@ def main():
         data_desc.to_csv('E:/Data Science Projects/1. Iris Dataset - Classification/reports/iris_clean_description.csv', index = False, encoding='utf-8')
         print('List of categories in categorical variable',file = outfile)
         print(df_iris['species'].unique(),'\n',file = outfile)
+        print('Distribution of categories',file = outfile)
+        print(df_iris.groupby('species').count(), file = outfile)
+
         
     #------------------------------------------------------------------------------
         
@@ -187,18 +190,7 @@ def main():
         print('\nEigen values: \n',eigen_values.transpose(), file = outfile)
         print('\nFactor Covariance: \n', covariances, file = outfile)
         df_iris_scores['species'] = df_iris['species']
-        df_iris_scores.to_csv('E:/Data Science Projects/1. Iris Dataset - Classification/data/processed/iris_scores.csv', index = False, encoding='utf-8')
-      
-      #Describe selected features
-        print('\nSelected Features Snapshot', file = outfile)
-        print(df_iris_scores.head(),'\n', file = outfile)
-        print('\nSelected Features Description', file = outfile)
-        data_desc = df_iris.describe()
-        print(data_desc,'\n', file = outfile)
-        data_desc.to_csv('E:/Data Science Projects/1. Iris Dataset - Classification/reports/iris_scored_description.csv', index = False, encoding='utf-8')
-        print('List of categories in categorical variable',file = outfile)
-        print(df_iris_scores['species'].unique(),'\n',file = outfile)
-            
+        
       #Check Correlation
         corr_csv_name = 'E:/Data Science Projects/1. Iris Dataset - Classification/reports/correlation_factors.csv'
         corr_image_name = 'E:/Data Science Projects/1. Iris Dataset - Classification/reports/figures/Correlation_Heatmap_Factors.png'
@@ -207,6 +199,20 @@ def main():
         scplt_image_name = 'E:/Data Science Projects/1. Iris Dataset - Classification/reports/figures/Scatterplot_Matrix_Factors.png'
         f_scatterplot(df_iris_scores,scplt_image_name)    
         
+        print('\n**Factor 2 has low correlation with Species. So dropping Factor 2**\n', file = outfile)
+        df_iris_scores.drop('Factor2', axis = 1)
+        
+        #Describe selected features
+        print('\nSelected Features Snapshot', file = outfile)
+        print(df_iris_scores.head(),'\n', file = outfile)
+        print('\nSelected Features Description', file = outfile)
+        data_desc = df_iris.describe()
+        print(data_desc,'\n', file = outfile)
+        data_desc.to_csv('E:/Data Science Projects/1. Iris Dataset - Classification/reports/iris_scored_description.csv', index = False, encoding='utf-8')
+        print('List of categories in categorical variable',file = outfile)
+        print(df_iris_scores['species'].unique(),'\n',file = outfile)
+        df_iris_scores.to_csv('E:/Data Science Projects/1. Iris Dataset - Classification/data/processed/iris_scores.csv', index = False, encoding='utf-8')
+      
     #------------------------------------------------------------------------------
         
       #Model Development
@@ -220,6 +226,7 @@ def main():
         test_y.to_csv('E:/Data Science Projects/1. Iris Dataset - Classification/data/processed/iris_test_y.csv', header = ['species'],  index = False, encoding='utf-8')
         
         #Train model
+        print('\n\nMultinomial Logistic Model\n', file = outfile)
         import models.train_model
          
         

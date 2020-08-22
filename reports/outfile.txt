@@ -1,6 +1,6 @@
 Project: Iris Classification
 Author: Aakriti Sinha
-Last run on  2020-08-16 05:07:00.281062
+Last run on  2020-08-22 13:22:38.835516
 
 Raw Dataset Snapshot
    sepal_length  sepal_width  petal_length  petal_width species
@@ -50,6 +50,12 @@ max        7.900000     4.400000      6.900000     2.500000    2.000000
 List of categories in categorical variable
 [0 1 2] 
 
+Distribution of categories
+         sepal_length  sepal_width  petal_length  petal_width
+species                                                      
+0                  50           50            50           50
+1                  50           50            50           50
+2                  50           50            50           50
 Minimum Sample Size: 25.525
 Sample size is sufficient for effect size of 0.8 and power of 0.8.
 
@@ -137,6 +143,19 @@ Factor Covariance:
  [ 0.86544268 -0.41762034  0.9933399   0.95610366]
  [ 0.84826727 -0.35980081  0.95610366  0.99333494]]
 
+Correlation Matrix
+              Factor1       Factor2   species
+Factor1  1.000000e+00  2.493659e-14  0.949475
+Factor2  2.493659e-14  1.000000e+00 -0.023269
+species  9.494746e-01 -2.326855e-02  1.000000
+
+Correlation Heatmap image file saved
+
+Scatterplot image file saved
+
+**Factor 2 has low correlation with Species. So dropping Factor 2**
+
+
 Selected Features Snapshot
     Factor1   Factor2  species
 0 -1.342115  0.505993        0
@@ -171,12 +190,1272 @@ List of categories in categorical variable
 [0 1 2] 
 
 
-Correlation Matrix
-              Factor1       Factor2   species
-Factor1  1.000000e+00  2.493659e-14  0.949475
-Factor2  2.493659e-14  1.000000e+00 -0.023269
-species  9.494746e-01 -2.326855e-02  1.000000
 
-Correlation Heatmap image file saved
+Multinomial Logistic Model
 
-Scatterplot image file saved
+
+
+Multinomial Logistic Model
+
+
+
+Multinomial Logistic Model
+
+
+
+Multinomial Logistic Model
+
+
+
+Multinomial Logistic Model
+
+
+
+Multinomial Logistic Model
+
+
+
+Multinomial Logistic Model
+
+
+
+Multinomial Logistic Model
+
+
+
+Multinomial Logistic Model
+
+
+
+Multinomial Logistic Model
+
+
+
+Multinomial Logistic Model
+
+
+
+Multinomial Logistic Model
+
+
+
+Multinomial Logistic Model
+
+
+
+Multinomial Logistic Model
+
+
+
+Multinomial Logistic Model
+
+
+
+Multinomial Logistic Model
+
+
+
+Multinomial Logistic Model
+
+
+
+Multinomial Logistic Model
+
+
+
+Multinomial Logistic Model
+
+
+
+Multinomial Logistic Model
+
+
+
+Multinomial Logistic Model
+
+
+
+Multinomial Logistic Model
+
+
+
+Multinomial Logistic Model
+
+
+
+Multinomial Logistic Model
+
+
+
+Multinomial Logistic Model
+
+
+
+Multinomial Logistic Model
+
+
+
+Multinomial Logistic Model
+
+
+
+Multinomial Logistic Model
+
+
+
+Multinomial Logistic Model
+
+
+
+Multinomial Logistic Model
+
+
+
+Multinomial Logistic Model
+
+
+
+Multinomial Logistic Model
+
+
+
+Multinomial Logistic Model
+
+
+
+Multinomial Logistic Model
+
+
+
+Multinomial Logistic Model
+
+
+
+Multinomial Logistic Model
+
+
+
+Multinomial Logistic Model
+
+
+
+Multinomial Logistic Model
+
+
+
+Multinomial Logistic Model
+
+
+
+Multinomial Logistic Model
+
+
+
+Multinomial Logistic Model
+
+
+
+Multinomial Logistic Model
+
+
+
+Multinomial Logistic Model
+
+
+
+Multinomial Logistic Model
+
+
+
+Multinomial Logistic Model
+
+
+
+Multinomial Logistic Model
+
+
+Confusion Matrices: 
+ [[[69  0]
+  [ 0 35]]
+
+ [[68  3]
+  [ 3 30]]
+
+ [[65  3]
+  [ 3 33]]]
+Precision:  0.9423076923076923
+Recall:  0.9423076923076923
+f-score:  0.9423076923076923
+Support:  None
+Accuracy:  0.9423076923076923
+Saving detailed classification report to folder
+
+ROC AUC:  0.9565644012619986
+
+
+Multinomial Logistic Model
+
+
+Confusion Matrices: 
+ [[[69  0]
+  [ 0 35]]
+
+ [[68  3]
+  [ 3 30]]
+
+ [[65  3]
+  [ 3 33]]]
+Precision:  0.9423076923076923
+Recall:  0.9423076923076923
+f-score:  0.9423076923076923
+Support:  None
+Accuracy:  0.9423076923076923
+Saving detailed classification report to folder
+
+ROC AUC:  0.9565644012619986
+
+ROC Curve plotsaved
+
+Confusion Matrices: 
+ [[[69  0]
+  [ 0 35]]
+
+ [[68  3]
+  [ 3 30]]
+
+ [[65  3]
+  [ 3 33]]]
+
+               precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00        35
+           1       0.91      0.91      0.91        33
+           2       0.92      0.92      0.92        36
+
+   micro avg       0.94      0.94      0.94       104
+   macro avg       0.94      0.94      0.94       104
+weighted avg       0.94      0.94      0.94       104
+ samples avg       0.94      0.94      0.94       104
+
+Accuracy:  0.9423076923076923
+Saving detailed classification report to folder
+
+ROC AUC:  0.9565644012619986
+
+ROC Curve plot saved
+
+Confusion Matrices: 
+ [[[69  0]
+  [ 0 35]]
+
+ [[68  3]
+  [ 3 30]]
+
+ [[65  3]
+  [ 3 33]]]
+
+               precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00        35
+           1       0.91      0.91      0.91        33
+           2       0.92      0.92      0.92        36
+
+   micro avg       0.94      0.94      0.94       104
+   macro avg       0.94      0.94      0.94       104
+weighted avg       0.94      0.94      0.94       104
+ samples avg       0.94      0.94      0.94       104
+
+Accuracy:  0.9423076923076923
+Saving detailed classification report to folder
+
+ROC AUC:  0.9565644012619986
+
+ROC Curve plot saved
+
+Confusion Matrices: 
+ [[[69  0]
+  [ 0 35]]
+
+ [[68  3]
+  [ 3 30]]
+
+ [[65  3]
+  [ 3 33]]]
+
+               precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00        35
+           1       0.91      0.91      0.91        33
+           2       0.92      0.92      0.92        36
+
+   micro avg       0.94      0.94      0.94       104
+   macro avg       0.94      0.94      0.94       104
+weighted avg       0.94      0.94      0.94       104
+ samples avg       0.94      0.94      0.94       104
+
+Accuracy:  0.9423076923076923
+Saving detailed classification report to folder
+
+ROC AUC:  0.9565644012619986
+
+ROC Curve plot saved
+
+Confusion Matrices: 
+ [[[69  0]
+  [ 0 35]]
+
+ [[68  3]
+  [ 3 30]]
+
+ [[65  3]
+  [ 3 33]]]
+
+               precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00        35
+           1       0.91      0.91      0.91        33
+           2       0.92      0.92      0.92        36
+
+   micro avg       0.94      0.94      0.94       104
+   macro avg       0.94      0.94      0.94       104
+weighted avg       0.94      0.94      0.94       104
+ samples avg       0.94      0.94      0.94       104
+
+Accuracy:  0.9423076923076923
+Saving detailed classification report to folder
+
+ROC AUC:  0.9565644012619986
+
+ROC Curve plot saved
+
+
+Multinomial Logistic Model
+
+
+Confusion Matrices: 
+ [[[69  0]
+  [ 1 34]]
+
+ [[71  0]
+  [33  0]]
+
+ [[68  0]
+  [36  0]]]
+
+               precision    recall  f1-score   support
+
+           0       1.00      0.97      0.99        35
+           1       0.00      0.00      0.00        33
+           2       0.00      0.00      0.00        36
+
+   micro avg       1.00      0.33      0.49       104
+   macro avg       0.33      0.32      0.33       104
+weighted avg       0.34      0.33      0.33       104
+ samples avg       0.33      0.33      0.33       104
+
+Accuracy:  0.3269230769230769
+Saving detailed classification report to folder
+
+Confusion Matrices: 
+ [[[69  0]
+  [ 1 34]]
+
+ [[71  0]
+  [33  0]]
+
+ [[68  0]
+  [36  0]]]
+
+               precision    recall  f1-score   support
+
+           0       1.00      0.97      0.99        35
+           1       0.00      0.00      0.00        33
+           2       0.00      0.00      0.00        36
+
+   micro avg       1.00      0.33      0.49       104
+   macro avg       0.33      0.32      0.33       104
+weighted avg       0.34      0.33      0.33       104
+ samples avg       0.33      0.33      0.33       104
+
+Accuracy:  0.3269230769230769
+Saving detailed classification report to folder
+
+Confusion Matrices: 
+ [[[69  0]
+  [ 1 34]]
+
+ [[71  0]
+  [33  0]]
+
+ [[68  0]
+  [36  0]]]
+
+               precision    recall  f1-score   support
+
+           0       1.00      0.97      0.99        35
+           1       0.00      0.00      0.00        33
+           2       0.00      0.00      0.00        36
+
+   micro avg       1.00      0.33      0.49       104
+   macro avg       0.33      0.32      0.33       104
+weighted avg       0.34      0.33      0.33       104
+ samples avg       0.33      0.33      0.33       104
+
+Accuracy:  0.3269230769230769
+Saving detailed classification report to folder
+
+ROC AUC:  0.956285967936755
+
+Confusion Matrices: 
+ [[[69  0]
+  [ 1 34]]
+
+ [[71  0]
+  [33  0]]
+
+ [[68  0]
+  [36  0]]]
+
+               precision    recall  f1-score   support
+
+           0       1.00      0.97      0.99        35
+           1       0.00      0.00      0.00        33
+           2       0.00      0.00      0.00        36
+
+   micro avg       1.00      0.33      0.49       104
+   macro avg       0.33      0.32      0.33       104
+weighted avg       0.34      0.33      0.33       104
+ samples avg       0.33      0.33      0.33       104
+
+Accuracy:  0.3269230769230769
+Saving detailed classification report to folder
+
+ROC AUC:  0.956285967936755
+
+Confusion Matrices: 
+ [[[69  0]
+  [ 1 34]]
+
+ [[71  0]
+  [33  0]]
+
+ [[68  0]
+  [36  0]]]
+
+               precision    recall  f1-score   support
+
+           0       1.00      0.97      0.99        35
+           1       0.00      0.00      0.00        33
+           2       0.00      0.00      0.00        36
+
+   micro avg       1.00      0.33      0.49       104
+   macro avg       0.33      0.32      0.33       104
+weighted avg       0.34      0.33      0.33       104
+ samples avg       0.33      0.33      0.33       104
+
+Accuracy:  0.3269230769230769
+Saving detailed classification report to folder
+
+ROC AUC:  0.956285967936755
+
+Confusion Matrices: 
+ [[[69  0]
+  [ 1 34]]
+
+ [[71  0]
+  [33  0]]
+
+ [[68  0]
+  [36  0]]]
+
+               precision    recall  f1-score   support
+
+           0       1.00      0.97      0.99        35
+           1       0.00      0.00      0.00        33
+           2       0.00      0.00      0.00        36
+
+   micro avg       1.00      0.33      0.49       104
+   macro avg       0.33      0.32      0.33       104
+weighted avg       0.34      0.33      0.33       104
+ samples avg       0.33      0.33      0.33       104
+
+Accuracy:  0.3269230769230769
+Saving detailed classification report to folder
+
+ROC AUC:  0.956285967936755
+
+Confusion Matrices: 
+ [[[69  0]
+  [ 1 34]]
+
+ [[71  0]
+  [33  0]]
+
+ [[68  0]
+  [36  0]]]
+
+               precision    recall  f1-score   support
+
+           0       1.00      0.97      0.99        35
+           1       0.00      0.00      0.00        33
+           2       0.00      0.00      0.00        36
+
+   micro avg       1.00      0.33      0.49       104
+   macro avg       0.33      0.32      0.33       104
+weighted avg       0.34      0.33      0.33       104
+ samples avg       0.33      0.33      0.33       104
+
+Accuracy:  0.3269230769230769
+Saving detailed classification report to folder
+
+ROC AUC:  0.956285967936755
+
+Confusion Matrices: 
+ [[[69  0]
+  [ 1 34]]
+
+ [[71  0]
+  [33  0]]
+
+ [[68  0]
+  [36  0]]]
+
+               precision    recall  f1-score   support
+
+           0       1.00      0.97      0.99        35
+           1       0.00      0.00      0.00        33
+           2       0.00      0.00      0.00        36
+
+   micro avg       1.00      0.33      0.49       104
+   macro avg       0.33      0.32      0.33       104
+weighted avg       0.34      0.33      0.33       104
+ samples avg       0.33      0.33      0.33       104
+
+Accuracy:  0.3269230769230769
+Saving detailed classification report to folder
+
+ROC AUC:  0.956285967936755
+
+Confusion Matrices: 
+ [[[69  0]
+  [ 1 34]]
+
+ [[71  0]
+  [33  0]]
+
+ [[68  0]
+  [36  0]]]
+
+               precision    recall  f1-score   support
+
+           0       1.00      0.97      0.99        35
+           1       0.00      0.00      0.00        33
+           2       0.00      0.00      0.00        36
+
+   micro avg       1.00      0.33      0.49       104
+   macro avg       0.33      0.32      0.33       104
+weighted avg       0.34      0.33      0.33       104
+ samples avg       0.33      0.33      0.33       104
+
+Accuracy:  0.3269230769230769
+Saving detailed classification report to folder
+
+ROC AUC:  0.956285967936755
+
+ROC Curve plot saved
+
+Confusion Matrices: 
+ [[[69  0]
+  [ 1 34]]
+
+ [[71  0]
+  [33  0]]
+
+ [[68  0]
+  [36  0]]]
+
+               precision    recall  f1-score   support
+
+           0       1.00      0.97      0.99        35
+           1       0.00      0.00      0.00        33
+
+   micro avg       1.00      0.50      0.67        68
+   macro avg       0.50      0.49      0.49        68
+weighted avg       0.51      0.50      0.51        68
+ samples avg       0.33      0.33      0.33        68
+
+Accuracy:  0.3269230769230769
+Saving detailed classification report to folder
+
+ROC AUC:  0.956285967936755
+
+ROC Curve plot saved
+
+Confusion Matrices: 
+ [[[69  0]
+  [ 1 34]]
+
+ [[71  0]
+  [33  0]]
+
+ [[68  0]
+  [36  0]]]
+
+               precision    recall  f1-score   support
+
+           0       1.00      0.97      0.99        35
+
+   micro avg       1.00      0.97      0.99        35
+   macro avg       1.00      0.97      0.99        35
+weighted avg       1.00      0.97      0.99        35
+ samples avg       0.33      0.33      0.33        35
+
+Accuracy:  0.3269230769230769
+Saving detailed classification report to folder
+
+ROC AUC:  0.956285967936755
+
+ROC Curve plot saved
+
+Confusion Matrices: 
+ [[[69  0]
+  [ 1 34]]
+
+ [[71  0]
+  [33  0]]
+
+ [[68  0]
+  [36  0]]]
+
+               precision    recall  f1-score   support
+
+           0       1.00      0.97      0.99        35
+
+   micro avg       1.00      0.97      0.99        35
+   macro avg       1.00      0.97      0.99        35
+weighted avg       1.00      0.97      0.99        35
+ samples avg       0.33      0.33      0.33        35
+
+
+Confusion Matrices: 
+ [[[69  0]
+  [ 1 34]]
+
+ [[71  0]
+  [33  0]]
+
+ [[68  0]
+  [36  0]]]
+
+               precision    recall  f1-score   support
+
+           0       1.00      0.97      0.99        35
+
+   micro avg       1.00      0.97      0.99        35
+   macro avg       1.00      0.97      0.99        35
+weighted avg       1.00      0.97      0.99        35
+ samples avg       0.33      0.33      0.33        35
+
+Accuracy:  0.3269230769230769
+Saving detailed classification report to folder
+
+ROC AUC:  0.956285967936755
+
+ROC Curve plot saved
+
+Confusion Matrices: 
+ [[[69  0]
+  [ 1 34]]
+
+ [[71  0]
+  [33  0]]
+
+ [[68  0]
+  [36  0]]]
+
+               precision    recall  f1-score   support
+
+           0       1.00      0.97      0.99        35
+
+   micro avg       1.00      0.97      0.99        35
+   macro avg       1.00      0.97      0.99        35
+weighted avg       1.00      0.97      0.99        35
+ samples avg       0.33      0.33      0.33        35
+
+Accuracy:  0.3269230769230769
+Saving detailed classification report to folder
+
+ROC AUC:  0.956285967936755
+
+Confusion Matrices: 
+ [[[69  0]
+  [ 1 34]]
+
+ [[71  0]
+  [33  0]]
+
+ [[68  0]
+  [36  0]]]
+
+               precision    recall  f1-score   support
+
+           0       1.00      0.97      0.99        35
+
+   micro avg       1.00      0.97      0.99        35
+   macro avg       1.00      0.97      0.99        35
+weighted avg       1.00      0.97      0.99        35
+ samples avg       0.33      0.33      0.33        35
+
+Accuracy:  0.3269230769230769
+Saving detailed classification report to folder
+
+ROC AUC:  0.956285967936755
+
+Confusion Matrices: 
+ [[[69  0]
+  [ 1 34]]
+
+ [[71  0]
+  [33  0]]
+
+ [[68  0]
+  [36  0]]]
+
+               precision    recall  f1-score   support
+
+           0       1.00      0.97      0.99        35
+
+   micro avg       1.00      0.97      0.99        35
+   macro avg       1.00      0.97      0.99        35
+weighted avg       1.00      0.97      0.99        35
+ samples avg       0.33      0.33      0.33        35
+
+Accuracy:  0.3269230769230769
+Saving detailed classification report to folder
+
+ROC AUC:  0.956285967936755
+
+ROC Curve plot saved
+
+Confusion Matrices: 
+ [[[69  0]
+  [ 1 34]]
+
+ [[71  0]
+  [33  0]]
+
+ [[68  0]
+  [36  0]]]
+
+               precision    recall  f1-score   support
+
+           0       1.00      0.97      0.99        35
+
+   micro avg       1.00      0.97      0.99        35
+   macro avg       1.00      0.97      0.99        35
+weighted avg       1.00      0.97      0.99        35
+ samples avg       0.33      0.33      0.33        35
+
+Accuracy:  0.3269230769230769
+Saving detailed classification report to folder
+
+ROC AUC:  0.956285967936755
+
+ROC Curve plot saved
+
+Confusion Matrices: 
+ [[[69  0]
+  [ 1 34]]
+
+ [[71  0]
+  [33  0]]
+
+ [[68  0]
+  [36  0]]]
+
+               precision    recall  f1-score   support
+
+           0       1.00      0.97      0.99        35
+
+   micro avg       1.00      0.97      0.99        35
+   macro avg       1.00      0.97      0.99        35
+weighted avg       1.00      0.97      0.99        35
+ samples avg       0.33      0.33      0.33        35
+
+Accuracy:  0.3269230769230769
+Saving detailed classification report to folder
+
+ROC AUC:  0.956285967936755
+
+ROC Curve plot saved
+
+Confusion Matrices: 
+ [[[70  0]
+  [ 0 35]]
+
+ [[72  0]
+  [33  0]]
+
+ [[68  0]
+  [37  0]]]
+
+               precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00        35
+
+   micro avg       1.00      1.00      1.00        35
+   macro avg       1.00      1.00      1.00        35
+weighted avg       1.00      1.00      1.00        35
+ samples avg       0.33      0.33      0.33        35
+
+Accuracy:  0.3333333333333333
+Saving detailed classification report to folder
+
+ROC AUC:  0.9569011970972755
+
+ROC Curve plot saved
+
+Confusion Matrices: 
+ [[[70  0]
+  [ 0 35]]
+
+ [[72  0]
+  [33  0]]
+
+ [[68  0]
+  [37  0]]]
+
+               precision    recall  f1-score   support
+
+           0       1.00      1.00      1.00        35
+
+   micro avg       1.00      1.00      1.00        35
+   macro avg       1.00      1.00      1.00        35
+weighted avg       1.00      1.00      1.00        35
+ samples avg       0.33      0.33      0.33        35
+
+Accuracy:  0.3333333333333333
+Saving detailed classification report to folder
+
+ROC AUC:  0.9569011970972755
+
+ROC Curve plot saved
+
+Confusion Matrices: 
+ [[[70  0]
+  [35  0]]
+
+ [[72  0]
+  [33  0]]
+
+ [[68  0]
+  [37  0]]]
+
+               precision    recall  f1-score   support
+
+
+   micro avg       0.00      0.00      0.00         0
+   macro avg        nan       nan       nan         0
+weighted avg       0.00      0.00      0.00         0
+ samples avg       0.00      0.00      0.00         0
+
+Accuracy:  0.0
+Saving detailed classification report to folder
+
+ROC AUC:  0.9953627870294537
+
+ROC Curve plot saved
+
+Confusion Matrices: 
+ [[[70  0]
+  [35  0]]
+
+ [[72  0]
+  [33  0]]
+
+ [[68  0]
+  [37  0]]]
+
+               precision    recall  f1-score   support
+
+     class 0       0.00      0.00      0.00        35
+     class 1       0.00      0.00      0.00        33
+     class 2       0.00      0.00      0.00        37
+
+   micro avg       0.00      0.00      0.00       105
+   macro avg       0.00      0.00      0.00       105
+weighted avg       0.00      0.00      0.00       105
+ samples avg       0.00      0.00      0.00       105
+
+Accuracy:  0.0
+Saving detailed classification report to folder
+
+ROC AUC:  0.9953627870294537
+
+ROC Curve plot saved
+
+Confusion Matrices: 
+ [[[70  0]
+  [35  0]]
+
+ [[72  0]
+  [33  0]]
+
+ [[68  0]
+  [37  0]]]
+
+               precision    recall  f1-score   support
+
+     class 0       0.00      0.00      0.00        35
+     class 1       0.00      0.00      0.00        33
+     class 2       0.00      0.00      0.00        37
+
+   micro avg       0.00      0.00      0.00       105
+   macro avg       0.00      0.00      0.00       105
+weighted avg       0.00      0.00      0.00       105
+ samples avg       0.00      0.00      0.00       105
+
+Accuracy:  0.0
+Saving detailed classification report to folder
+
+ROC AUC:  0.9953627870294537
+
+ROC Curve plot saved
+
+Confusion Matrices: 
+ [[[70  0]
+  [35  0]]
+
+ [[72  0]
+  [33  0]]
+
+ [[68  0]
+  [37  0]]]
+
+               precision    recall  f1-score   support
+
+
+   micro avg       0.00      0.00      0.00         0
+   macro avg        nan       nan       nan         0
+weighted avg       0.00      0.00      0.00         0
+ samples avg       0.00      0.00      0.00         0
+
+Accuracy:  0.0
+Saving detailed classification report to folder
+
+ROC AUC:  0.9953627870294537
+
+ROC Curve plot saved
+
+Confusion Matrices: 
+ [[[70  0]
+  [35  0]]
+
+ [[72  0]
+  [33  0]]
+
+ [[68  0]
+  [37  0]]]
+
+               precision    recall  f1-score   support
+
+           0       0.00      0.00      0.00        35
+           1       0.00      0.00      0.00        33
+           2       0.00      0.00      0.00        37
+
+   micro avg       0.00      0.00      0.00       105
+   macro avg       0.00      0.00      0.00       105
+weighted avg       0.00      0.00      0.00       105
+ samples avg       0.00      0.00      0.00       105
+
+Accuracy:  0.0
+Saving detailed classification report to folder
+
+ROC AUC:  0.9953627870294537
+
+ROC Curve plot saved
+
+Confusion Matrices: 
+ [[[70  0]
+  [35  0]]
+
+ [[72  0]
+  [33  0]]
+
+ [[68  0]
+  [37  0]]]
+
+               precision    recall  f1-score   support
+
+
+   micro avg       0.00      0.00      0.00         0
+   macro avg        nan       nan       nan         0
+weighted avg       0.00      0.00      0.00         0
+ samples avg       0.00      0.00      0.00         0
+
+Accuracy:  0.0
+Saving detailed classification report to folder
+
+ROC AUC:  0.9953627870294537
+
+ROC Curve plot saved
+
+Confusion Matrices: 
+ [[[70  0]
+  [35  0]]
+
+ [[72  0]
+  [33  0]]
+
+ [[68  0]
+  [37  0]]]
+
+               precision    recall  f1-score   support
+
+
+   micro avg       0.00      0.00      0.00         0
+   macro avg        nan       nan       nan         0
+weighted avg       0.00      0.00      0.00         0
+ samples avg       0.00      0.00      0.00         0
+
+Accuracy:  0.0
+Saving detailed classification report to folder
+
+ROC AUC:  0.9953627870294537
+
+ROC Curve plot saved
+
+Confusion Matrices: 
+ [[[70  0]
+  [35  0]]
+
+ [[72  0]
+  [33  0]]
+
+ [[68  0]
+  [37  0]]]
+
+               precision    recall  f1-score   support
+
+
+   micro avg       0.00      0.00      0.00         0
+   macro avg        nan       nan       nan         0
+weighted avg       0.00      0.00      0.00         0
+ samples avg       0.00      0.00      0.00         0
+
+Accuracy:  0.0
+Saving detailed classification report to folder
+
+ROC AUC:  0.9953627870294537
+
+ROC Curve plot saved
+
+Confusion Matrices: 
+ [[[70  0]
+  [35  0]]
+
+ [[72  0]
+  [33  0]]
+
+ [[68  0]
+  [37  0]]]
+
+               precision    recall  f1-score   support
+
+
+   micro avg       0.00      0.00      0.00         0
+   macro avg        nan       nan       nan         0
+weighted avg       0.00      0.00      0.00         0
+ samples avg       0.00      0.00      0.00         0
+
+Accuracy:  0.0
+Saving detailed classification report to folder
+
+ROC AUC:  0.9953627870294537
+
+ROC Curve plot saved
+
+Confusion Matrices: 
+ [[[70  0]
+  [35  0]]
+
+ [[72  0]
+  [33  0]]
+
+ [[68  0]
+  [37  0]]]
+
+               precision    recall  f1-score   support
+
+
+   micro avg       0.00      0.00      0.00         0
+   macro avg        nan       nan       nan         0
+weighted avg       0.00      0.00      0.00         0
+ samples avg       0.00      0.00      0.00         0
+
+Accuracy:  0.0
+Saving detailed classification report to folder
+
+ROC AUC:  0.9953627870294537
+
+ROC Curve plot saved
+
+Confusion Matrices: 
+ [[[70  0]
+  [35  0]]
+
+ [[72  0]
+  [33  0]]
+
+ [[68  0]
+  [37  0]]]
+
+               precision    recall  f1-score   support
+
+
+   micro avg       0.00      0.00      0.00         0
+   macro avg        nan       nan       nan         0
+weighted avg       0.00      0.00      0.00         0
+ samples avg       0.00      0.00      0.00         0
+
+Accuracy:  0.0
+Saving detailed classification report to folder
+
+ROC AUC:  0.9953627870294537
+
+Confusion Matrices: 
+ [[[70  0]
+  [35  0]]
+
+ [[72  0]
+  [33  0]]
+
+ [[68  0]
+  [37  0]]]
+
+               precision    recall  f1-score   support
+
+
+   micro avg       0.00      0.00      0.00         0
+   macro avg        nan       nan       nan         0
+weighted avg       0.00      0.00      0.00         0
+ samples avg       0.00      0.00      0.00         0
+
+Accuracy:  0.0
+Saving detailed classification report to folder
+
+ROC AUC:  0.9953627870294537
+
+Confusion Matrices: 
+ [[[70  0]
+  [35  0]]
+
+ [[72  0]
+  [33  0]]
+
+ [[68  0]
+  [37  0]]]
+
+               precision    recall  f1-score   support
+
+
+   micro avg       0.00      0.00      0.00         0
+   macro avg        nan       nan       nan         0
+weighted avg       0.00      0.00      0.00         0
+ samples avg       0.00      0.00      0.00         0
+
+Accuracy:  0.0
+Saving detailed classification report to folder
+
+ROC AUC:  0.9953627870294537
+
+Confusion Matrices: 
+ [[[70  0]
+  [35  0]]
+
+ [[72  0]
+  [33  0]]
+
+ [[68  0]
+  [37  0]]]
+
+               precision    recall  f1-score   support
+
+
+   micro avg       0.00      0.00      0.00         0
+   macro avg        nan       nan       nan         0
+weighted avg       0.00      0.00      0.00         0
+ samples avg       0.00      0.00      0.00         0
+
+Accuracy:  0.0
+Saving detailed classification report to folder
+
+ROC AUC:  0.9953627870294537
+
+ROC Curve plot saved
+
+Confusion Matrices: 
+ [[[70  0]
+  [35  0]]
+
+ [[72  0]
+  [33  0]]
+
+ [[68  0]
+  [37  0]]]
+
+Confusion Matrices: 
+ [[[70  0]
+  [35  0]]
+
+ [[72  0]
+  [33  0]]
+
+ [[68  0]
+  [37  0]]]
+
+               precision    recall  f1-score   support
+
+           0       0.00      0.00      0.00        35
+           1       0.00      0.00      0.00        33
+           2       0.00      0.00      0.00        37
+
+   micro avg       0.00      0.00      0.00       105
+   macro avg       0.00      0.00      0.00       105
+weighted avg       0.00      0.00      0.00       105
+ samples avg       0.00      0.00      0.00       105
+
+Accuracy:  0.0
+Saving detailed classification report to folder
+
+ROC AUC:  0.9953627870294537
+
+ROC Curve plot saved
+
+Confusion Matrices: 
+ [[[70  0]
+  [35  0]]
+
+ [[72  0]
+  [33  0]]
+
+ [[68  0]
+  [37  0]]]
+
+               precision    recall  f1-score   support
+
+           0       0.00      0.00      0.00        35
+           1       0.00      0.00      0.00        33
+           2       0.00      0.00      0.00        37
+
+   micro avg       0.00      0.00      0.00       105
+   macro avg       0.00      0.00      0.00       105
+weighted avg       0.00      0.00      0.00       105
+ samples avg       0.00      0.00      0.00       105
+
+Accuracy:  0.0
+Saving detailed classification report to folder
+
+ROC AUC:  0.9953627870294537
+
+ROC Curve plot saved
