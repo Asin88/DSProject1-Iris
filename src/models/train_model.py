@@ -24,6 +24,15 @@ from datetime import datetime
 
 #Define Functions
 
+#Function to get absolute file path
+def f_getFilePath(rel_path):
+    script_path = os.path.abspath(__file__) # i.e. /path/to/dir/foobar.py
+    script_dir1 = os.path.split(script_path)[0] #i.e. /path/to/dir/
+    script_dir2 = os.path.split(script_dir1)[0] #i.e. /path/to/dir/
+    cwd_dir = os.path.split(script_dir2)[0] #i.e. /path/to/
+    abs_file_path = os.path.join(cwd_dir, rel_path)
+    return(abs_file_path)
+
 #Function to calculte Mean Square Error
 def f_calcMSE(train_y, train_pred):
     
@@ -78,17 +87,13 @@ def f_classificationReport(train_y, train_pred):
 #    print('train_y: \n',train_y.head())
     train_pred = train_pred.applymap(int)
      #Confusion Matrices
-#    confusionmatrix = metrics.confusion_matrix(train_y,train_pred)
     confusionmatrix = metrics.multilabel_confusion_matrix(train_y,train_pred)
-    print('\nConfusion Matrices: \n', confusionmatrix,file= outfile)
     print('\nConfusion Matrices: \n', confusionmatrix,file= sumfile)
     
     #Find precision, recall, f score, support and accuracy
     class_report = metrics.classification_report(train_y,train_pred)
-    print('\n',class_report, file = outfile)
-    print('Accuracy: ', metrics.accuracy_score(train_y,train_pred), file = outfile)
     #Print to summary file
-    print('Saving detailed classification report to folder', file = outfile)
+    print('Saving detailed classification report to folder')
     print(class_report, file = sumfile)
     print('Accuracy: ', metrics.accuracy_score(train_y,train_pred), file = sumfile)
     
@@ -165,8 +170,8 @@ def f_rocAUC(train_y, train_pred):
     plt.ylabel('True Positive Rate')
     plt.title('Some extension of Receiver operating characteristic to multi-class')
     plt.legend(loc="lower right")
-    plt.savefig('E:/Data Science Projects/1. Iris Dataset - Classification/reports/figures/ROC_Curve.png')
-    print('\nROC Curve plot saved',file = outfile)
+    plt.savefig(f_getFilePath('reports\\figures\\ROC_Curve.png'))
+    print('\nROC Curve plot saved')
     plt.show()
     
 # =============================================================================
@@ -180,18 +185,14 @@ def f_rocAUC(train_y, train_pred):
     
 #Main function
 print('train_model script started')
+
 #Output file
-outfile = open('E:/Data Science Projects/1. Iris Dataset - Classification/reports/outfile.txt','a')
-filepath = 'E:/Data Science Projects/1. Iris Dataset - Classification/data/processed/iris_train_x.csv'
+abs_file_path = f_getFilePath('data\\processed\\iris_train_x.csv')
 train_x = pd.read_csv(filepath, header='infer', index_col=None)
-#train_x = pd.DataFrame(train_x)
 print(train_x.head())
-filepath = 'E:/Data Science Projects/1. Iris Dataset - Classification/data/processed/iris_train_y.csv'
+abs_file_path = f_getFilePath('data\\processed\\iris_train_y.csv')
 train_y = pd.read_csv(filepath, header='infer', index_col=None)
 print(train_y.head())
-#lb = preprocessing.LabelBinarizer()
-#train_y = lb.fit_transform(train_y)
-#train_y = pd.DataFrame(train_y)
 
 #Build logit function
 reg_func = dm.MNLogit(train_y, add_constant(train_x))
@@ -202,7 +203,8 @@ reg_model = reg_func.fit(method = 'powell', maxiter = 200)
 
 #Model Summary
 stats.chisqprob = lambda chisq, reg_model: stats.chi2.sf(chisq, reg_model) #fix for summary()
-sumfile = open('E:/Data Science Projects/1. Iris Dataset - Classification/reports/reg_model_summary.txt','w')
+#abs_file_path = f_getFilePath('reports\\reg_model_summary.txt')
+sumfile = open(f_getFilePath('reports\\reg_model_summary.txt'),'w')
 print(reg_model.summary2(), file = sumfile)
 
 #Metrics
@@ -215,11 +217,11 @@ print(train_pred.head())
 #f_printSummary(train_y, train_pred)
 
 ##Classification Report
-classfile = open('E:/Data Science Projects/1. Iris Dataset - Classification/reports/classification_report.txt','w')
+classfile = open(f_getFilePath('reports\\classification_report.txt'),'w')
 f_classificationReport(train_y, train_pred)
 #ROC Curve
 f_rocAUC(train_y, train_pred)
 
 sumfile.close()
-outfile.close()
+classfile.close()
 

@@ -1,0 +1,23 @@
+
+Clean Data Description
+          species  sepal_length_std  ...  petal_length_std  petal_width_std
+count  150.000000      1.500000e+02  ...      1.500000e+02     1.500000e+02
+mean     1.000000     -1.451617e-15  ...     -1.959174e-15    -4.988602e-16
+std      0.819232      1.000000e+00  ...      1.000000e+00     1.000000e+00
+min      0.000000     -1.863780e+00  ...     -1.563497e+00    -1.439627e+00
+25%      0.000000     -8.976739e-01  ...     -1.223442e+00    -1.177559e+00
+50%      1.000000     -5.233076e-02  ...      3.351431e-01     1.327811e-01
+75%      2.000000      6.722490e-01  ...      7.602119e-01     7.879511e-01
+max      2.000000      2.483699e+00  ...      1.780377e+00     1.705189e+00
+
+[8 rows x 5 columns] 
+
+List of categories in categorical variable
+[0 1 2] 
+
+Distribution of categories
+         sepal_length_std  sepal_width_std  petal_length_std  petal_width_std
+species                                                                      
+0                      50               50                50               50
+1                      50               50                50               50
+2                      50               50                50               50

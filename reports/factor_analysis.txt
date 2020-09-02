@@ -1,0 +1,41 @@
+Factor Analysis Report
+
+
+Bartlett’s test of sphericity:
+Chi-square value =  1100.126 , p-value =  0.0
+Statistically significant. Dataset is not an identity matrix.
+
+Kaiser-Meyer-Olkin (KMO) test: 
+KMO =  0.714
+KMO is adequate. Data is suitable for factor analysis.
+
+Configuration
+
+FactorAnalyzer(n_factors=2, rotation='varimax', rotation_kwargs={}) 
+
+Eigen Values
+      0     1     2     3
+0  2.91  0.92  0.15  0.02
+1  2.83  0.89  0.01 -0.01 
+
+Factor Loadings
+   Factor 1  Factor 2
+0      0.90      0.02
+1     -0.15      0.99
+2      0.97     -0.28
+3      0.92     -0.23 
+
+   Communalities
+0           0.81
+1           1.00
+2           1.01
+3           0.90 
+
+Variances 
+1. Sum of squared loadings (variance) 
+2. Proportional variance 
+3. Cumulative variance)
+   Factor 1  Factor 2
+0      2.62      1.10
+1      0.65      0.28
+2      0.65      0.93

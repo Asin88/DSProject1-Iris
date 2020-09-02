@@ -1,0 +1,21 @@
+            Factor1       Factor2     species
+count  1.500000e+02  1.500000e+02  150.000000
+mean  -1.694940e-16 -1.182388e-16    1.000000
+std    1.017814e+00  1.002082e+00    0.819232
+min   -2.293529e+00 -2.595624e+00    0.000000
+25%   -1.012848e+00 -5.667800e-01    0.000000
+50%    2.055695e-01 -3.286997e-02    1.000000
+75%    7.439435e-01  6.276997e-01    2.000000
+max    2.564714e+00  3.063142e+00    2.000000
+
+List of categories in categorical variable
+ [0 1 2]
+
+Distribution of categories
+          sepal_length_std  sepal_width_std  petal_length_std  petal_width_std
+species                                                                      
+0                      50               50                50               50
+1                      50               50                50               50
+2                      50               50                50               50
+
+Cronbach Alpha:  (0.40911951221074205, array([0.224, 0.556]))

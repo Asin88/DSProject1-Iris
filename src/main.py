@@ -15,17 +15,29 @@ from datetime import datetime
 import numpy as np
 import pandas as pd 
 import matplotlib.pyplot as plt
-from sklearn import preprocessing
+#from sklearn import preprocessing
+from scipy.stats import chi2
 import sklearn.model_selection as moses
 from statsmodels.stats import power as pwr
-import statsmodels.discrete.discrete_model as dm
+#import statsmodels.discrete.discrete_model as dm
 import math 
+import os
+import pingouin
 
 # =============================================================================
 # #Define Functions
 # =============================================================================
+
+#Function to get file path
+def f_getFilePath(rel_path):
+    script_path = os.path.abspath(__file__) # i.e. /path/to/dir/foobar.py
+    script_dir = os.path.split(script_path)[0] #i.e. /path/to/dir/
+    cwd_dir = os.path.split(script_dir)[0] #i.e. /path/to/
+    abs_file_path = os.path.join(cwd_dir, rel_path)
+    return(abs_file_path)
+    
 #Function to test power of dataset
-def f_powerTest():
+def f_powerTest(df_iris):
     #parameters for power analysis
     effect = 0.8
     alpha = 0.05
@@ -43,14 +55,23 @@ def f_powerTest():
         
 #Function to build collinearity matrix and heatmap
 def f_correlation(df_name,corr_csv_name, corr_image_name):
+    
+    #Get file path
+    abs_file_path = f_getFilePath(corr_csv_name)
+    
     print('\nCorrelation Matrix',file = outfile)
     correlation = df_name.corr(method='pearson')
     #Saving correlation matrix to new csv file
-    correlation.to_csv(corr_csv_name, encoding='utf-8')
+    correlation.to_csv(abs_file_path, encoding='utf-8')
     print(correlation,file = outfile)
+    
+    #Correlation heat map
+    #Get file path
+    abs_file_path = f_getFilePath(corr_image_name)
+    
     corr_matrix = plt.matshow(correlation)
     plt.yticks(range(len(correlation.columns)), correlation.columns)
-    plt.savefig(corr_image_name)
+    plt.savefig(abs_file_path)
     print('\nCorrelation Heatmap image file saved',file = outfile)
     plt.show()
     return correlation
@@ -64,22 +85,31 @@ def f_scatterplot(df_name,scplt_image_name):
     #May need to offset label when rotating to prevent overlap of figure
     [s.get_yaxis().set_label_coords(-0.5,0.5) for s in scatterplot.reshape(-1)]
     [s.set_yticks(()) for s in scatterplot.reshape(-1)]    
-    plt.savefig(scplt_image_name)
+    abs_file_path = f_getFilePath(scplt_image_name)
+    plt.savefig(abs_file_path)
     print('\nScatterplot image file saved',file=outfile)
     plt.show()
     
 #------------------------------------------------------------------------------
         
 #Function to test factorability of data
-def f_testFactorability(correlation):
+def f_testFactorability(df_iris, correlation):
     #Bartlett's test
+    #not working
 #    chi_square_value,p_value = ss.bartlett(df_iris)
-#    print('Bartlett’s test of sphericity:\nChi-square value = ', chi_square_value, ', p-value = ',p_value, file = outfile)
-#    if p_value <= 0.05:
-#        print('Statistically significant. Dataset is not an identity matrix.',file = outfile)
-#    else:
-#        print('**Test is Insignificant. Dataset cannot be used for factor analysis**', file = outfile)
-#        exit()
+    #might work
+    n, p = df_iris.shape
+    corr_det = np.linalg.det(correlation)
+    statistic = -np.log(corr_det) * (n - 1 - (2 * p + 5) / 6)
+    degrees_of_freedom = p * (p - 1) / 2
+    p_value = chi2.pdf(statistic, degrees_of_freedom)
+#    
+    print('Bartlett’s test of sphericity:\nChi-square value = ', statistic, ', p-value = ',p_value, file = outfile)
+    if p_value <= 0.05:
+        print('Statistically significant. Dataset is not an identity matrix.',file = outfile)
+    else:
+        print('**Test is Insignificant. Dataset cannot be used for factor analysis**', file = outfile)
+        exit()
     
     #Kaiser-Meyer-Olkin test
     corr_inv = np.linalg.inv(correlation)
@@ -138,18 +168,30 @@ def main():
         print('\nClean Data Description', file = outfile)
         data_desc = df_iris.describe()
         print(data_desc,'\n', file = outfile)
-        data_desc.to_csv('E:/Data Science Projects/1. Iris Dataset - Classification/reports/iris_clean_description.csv', index = False, encoding='utf-8')
         print('List of categories in categorical variable',file = outfile)
-        print(df_iris['species'].unique(),'\n',file = outfile)
+        cat_list = df_iris['species'].unique()
+        print(cat_list,'\n',file = outfile)
         print('Distribution of categories',file = outfile)
-        print(df_iris.groupby('species').count(), file = outfile)
-
+        cat_dist = df_iris.groupby('species').count()
+        print(cat_dist, file = outfile)
         
+        #Save clean data description report
+        abs_file_path = f_getFilePath("reports\\iris_clean_description.txt")
+        cleandescfile = open(abs_file_path,'w')
+        print('\nClean Data Description', file = cleandescfile)
+        print(data_desc,'\n', file = cleandescfile)
+        print('List of categories in categorical variable',file = cleandescfile)
+        print(cat_list,'\n',file = cleandescfile)
+        print('Distribution of categories',file = cleandescfile)
+        print(cat_dist, file = cleandescfile)
+        
+        cleandescfile.close()
+                
     #------------------------------------------------------------------------------
         
       #Test power of dataset
       
-        f_powerTest()
+        f_powerTest(df_iris)
     
     #------------------------------------------------------------------------------
             
@@ -162,18 +204,34 @@ def main():
         print('\nScaled Data Description', file = outfile)
         data_desc = df_iris.describe()
         print(data_desc,'\n', file = outfile)
-        data_desc.to_csv('E:/Data Science Projects/1. Iris Dataset - Classification/reports/iris_scaled_description.csv', encoding='utf-8')
         print('List of categories in categorical variable',file = outfile)
-        print(df_iris['species'].unique(),'\n',file = outfile)
+        cat_list = df_iris['species'].unique()
+        print(cat_list,'\n',file = outfile)
+        print('Distribution of categories',file = outfile)
+        cat_dist = df_iris.groupby('species').count()
+        print(cat_dist, file = outfile)
+        
+        #Save scaled data description report
+        abs_file_path = f_getFilePath("reports\\iris_scaled_description.txt")
+        scaledescfile = open(abs_file_path,'w')
+        print('\nClean Data Description', file = scaledescfile)
+        print(data_desc,'\n', file = scaledescfile)
+        print('List of categories in categorical variable',file = scaledescfile)
+        print(cat_list,'\n',file = scaledescfile)
+        print('Distribution of categories',file = scaledescfile)
+        print(cat_dist, file = scaledescfile)
+        
+        scaledescfile.close()
+        
         
     #------------------------------------------------------------------------------
         
       #Check Correlation
-        corr_csv_name = 'E:/Data Science Projects/1. Iris Dataset - Classification/reports/correlation.csv'
-        corr_image_name = 'E:/Data Science Projects/1. Iris Dataset - Classification/reports/figures/Correlation_Heatmap.png'
+        corr_csv_name = 'reports\\correlation.csv'
+        corr_image_name = 'reports\\figures\\Correlation_Heatmap.png'
         correlation = f_correlation(df_iris,corr_csv_name,corr_image_name)
       #Scatterplot Matrix    
-        scplt_image_name = 'E:/Data Science Projects/1. Iris Dataset - Classification/reports/figures/Scatterplot_Matrix.png'
+        scplt_image_name = 'reports\\figures\\Scatterplot_Matrix.png'
         f_scatterplot(df_iris,scplt_image_name)    
         
         
@@ -185,62 +243,82 @@ def main():
         print('\nFACTOR ANALYSIS\n', file = outfile)
        
       #Testing factorability
-        f_testFactorability(correlation)
-        from features.factor_analysis import eigen_values, covariances, df_iris_scores
-        print('\nEigen values: \n',eigen_values.transpose(), file = outfile)
-        print('\nFactor Covariance: \n', covariances, file = outfile)
+    #        f_testFactorability(df_iris, correlation)
+        from features.factor_analysis import df_iris_scores
         df_iris_scores['species'] = df_iris['species']
         
-      #Check Correlation
-        corr_csv_name = 'E:/Data Science Projects/1. Iris Dataset - Classification/reports/correlation_factors.csv'
-        corr_image_name = 'E:/Data Science Projects/1. Iris Dataset - Classification/reports/figures/Correlation_Heatmap_Factors.png'
+        #Check Correlation
+        corr_csv_name = 'reports\\correlation_factors.csv'
+        corr_image_name = 'reports\\figures\\Correlation_Heatmap_Factors.png'
         correlation = f_correlation(df_iris_scores,corr_csv_name,corr_image_name)
-      #Scatterplot Matrix    
-        scplt_image_name = 'E:/Data Science Projects/1. Iris Dataset - Classification/reports/figures/Scatterplot_Matrix_Factors.png'
+        #Scatterplot Matrix    
+        scplt_image_name = 'reports\\figures\\Scatterplot_Matrix_Factors.png'
         f_scatterplot(df_iris_scores,scplt_image_name)    
         
         print('\n**Factor 2 has low correlation with Species. So dropping Factor 2**\n', file = outfile)
         df_iris_scores.drop('Factor2', axis = 1)
         
+        #Save selected feature scores
+        abs_file_path = f_getFilePath("data\\processed\\iris_scores.csv")
+        df_iris_scores.to_csv(abs_file_path, index = False, encoding='utf-8')
+        
         #Describe selected features
         print('\nSelected Features Snapshot', file = outfile)
         print(df_iris_scores.head(),'\n', file = outfile)
         print('\nSelected Features Description', file = outfile)
-        data_desc = df_iris.describe()
-        print(data_desc,'\n', file = outfile)
-        data_desc.to_csv('E:/Data Science Projects/1. Iris Dataset - Classification/reports/iris_scored_description.csv', index = False, encoding='utf-8')
+        data_desc = df_iris_scores.describe()
+        print(data_desc, file = outfile)
         print('List of categories in categorical variable',file = outfile)
-        print(df_iris_scores['species'].unique(),'\n',file = outfile)
-        df_iris_scores.to_csv('E:/Data Science Projects/1. Iris Dataset - Classification/data/processed/iris_scores.csv', index = False, encoding='utf-8')
-      
+        cat_list = df_iris['species'].unique()
+        print(cat_list,'\n',file = outfile)
+        print('Distribution of categories',file = outfile)
+        cat_dist = df_iris.groupby('species').count()
+        print(cat_dist, file = outfile)
+        
+        #Save selected factors description report
+        abs_file_path = f_getFilePath('reports\\iris_factors_description.txt')
+        fadescfile = open(abs_file_path, 'w')
+        print(data_desc, file = fadescfile)
+        print('\nList of categories in categorical variable\n',cat_list,file = fadescfile)
+        print('\nDistribution of categories\n', cat_dist,file = fadescfile)
+        print('\nCronbach Alpha: ', pingouin.cronbach_alpha(df_iris_scores), file = fadescfile)
+        fadescfile.close()
+              
     #------------------------------------------------------------------------------
         
       #Model Development
-        outfile.close()
-     
+        
       #Train-Test Split
-        train_x, test_x, train_y, test_y = moses.train_test_split(df_iris_scores.iloc[:,:-1], df_iris_scores.iloc[:,-1], train_size=0.7, test_size=0.3)
-        train_x.to_csv('E:/Data Science Projects/1. Iris Dataset - Classification/data/processed/iris_train_x.csv', index = False, encoding='utf-8')
-        train_y.to_csv('E:/Data Science Projects/1. Iris Dataset - Classification/data/processed/iris_train_y.csv', header = ['species'], index = False, encoding='utf-8')
-        test_x.to_csv('E:/Data Science Projects/1. Iris Dataset - Classification/data/processed/iris_test_x.csv', index = False, encoding='utf-8')
-        test_y.to_csv('E:/Data Science Projects/1. Iris Dataset - Classification/data/processed/iris_test_y.csv', header = ['species'],  index = False, encoding='utf-8')
+        print(df_iris_scores.iloc[:,:-1].shape)
+        print(df_iris_scores.iloc[:,-1].shape)
+        train_x, test_x, train_y, test_y = moses.train_test_split(df_iris_scores.iloc[:,:-1], df_iris_scores.iloc[:,-1], train_size=0.7, test_size=0.3, random_state = 42, stratify = cat_list)
+        abs_file_path = f_getFilePath("data\\processed\\iris_train_x.csv")
+        train_x.to_csv(abs_file_path, index = False, encoding='utf-8')
+        abs_file_path = f_getFilePath("data\\processed\\iris_train_y.csv")
+        train_y.to_csv(abs_file_path, header = ['species'], index = False, encoding='utf-8')
+        abs_file_path = f_getFilePath("data\\processed\\iris_test_x.csv")
+        test_x.to_csv(abs_file_path, index = False, encoding='utf-8')
+        abs_file_path = f_getFilePath("data\\processed\\iris_test_y.csv")
+        test_y.to_csv(abs_file_path, header = ['species'],  index = False, encoding='utf-8')
         
         #Train model
         print('\n\nMultinomial Logistic Model\n', file = outfile)
         import models.train_model
-         
-        
-      
-    # =============================================================================
-    #     #End of Main Function
-    # =============================================================================
-    
+             
+            
+          
+        # =============================================================================
+        #     #End of Main Function
+        # =============================================================================
+
 
 if __name__ == '__main__':
         
     print('Main function')
     #Output file
-    outfile = open('E:/Data Science Projects/1. Iris Dataset - Classification/reports/outfile.txt','w')
+    abs_file_path = f_getFilePath("reports\\outfile.txt")
+    outfile = open(abs_file_path,'w')
+    #Call main function
     main()
     #Close output file
     outfile.close()

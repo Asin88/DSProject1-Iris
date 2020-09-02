@@ -8,6 +8,7 @@ Created on Thu Aug 13 21:22:05 2020
 #Import modules
 from sklearn import preprocessing
 from data.clean_data import df_iris
+import os
 
 #Function to centre data
 def f_centreData():
@@ -35,4 +36,10 @@ f_standardizeData()
 preprocessing.normalize(df_iris)
 
 #Saving scaled data to new csv file
-df_iris.to_csv('E:/Data Science Projects/1. Iris Dataset - Classification/data/processed/iris_scaled.csv', index = False, encoding='utf-8')
+script_path = os.path.abspath(__file__) # i.e. /path/to/dir/foobar.py
+script_dir1 = os.path.split(script_path)[0] #i.e. /path/to/dir/
+script_dir2 = os.path.split(script_dir1)[0] #i.e. /path/to/dir/
+cwd_dir = os.path.split(script_dir2)[0] #i.e. /path/to/
+rel_path = "data\\interim\\iris_scaled.csv"
+abs_file_path = os.path.join(cwd_dir, rel_path)
+df_iris.to_csv(abs_file_path, index = False, encoding='utf-8')

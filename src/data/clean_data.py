@@ -10,6 +10,7 @@ Created on Tue Jun 16 04:12:16 2020
 
 #Import modules
 import pandas as pd
+import os
 
 #Encode categorical variable
 def f_categoryEncoder():
@@ -40,5 +41,11 @@ f_categoryEncoder()
 missing_message = f_missingData()
 
 #Saving clean data to new csv file
-df_iris.to_csv('E:/Data Science Projects/1. Iris Dataset - Classification/data/processed/iris_clean.csv', index = False, encoding='utf-8')
+script_path = os.path.abspath(__file__) # i.e. /path/to/dir/foobar.py
+script_dir1 = os.path.split(script_path)[0] #i.e. /path/to/dir/
+script_dir2 = os.path.split(script_dir1)[0] #i.e. /path/to/dir/
+cwd_dir = os.path.split(script_dir2)[0] #i.e. /path/to/
+rel_path = "data\\interim\\iris_clean.csv"
+abs_file_path = os.path.join(cwd_dir, rel_path)
+df_iris.to_csv(abs_file_path, index = False, encoding='utf-8')
 
