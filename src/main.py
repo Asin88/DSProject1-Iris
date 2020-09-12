@@ -289,9 +289,12 @@ def main():
       #Model Development
         
       #Train-Test Split
-        print(df_iris_scores.iloc[:,:-1].shape)
-        print(df_iris_scores.iloc[:,-1].shape)
-        train_x, test_x, train_y, test_y = moses.train_test_split(df_iris_scores.iloc[:,:-1], df_iris_scores.iloc[:,-1], train_size=0.7, test_size=0.3, random_state = 42, stratify = cat_list)
+        print(cat_list)
+        print(df_iris_scores.iloc[:,:-1].head())
+        print(df_iris_scores.iloc[:,-1].head())
+#        train_x, test_x, train_y, test_y = moses.train_test_split(df_iris_scores.iloc[:,:-1], df_iris_scores.iloc[:,-1], train_size=0.7, test_size=0.3, random_state = 42)
+        
+        train_x, test_x, train_y, test_y = moses.train_test_split(df_iris_scores.iloc[:,:-1], df_iris_scores.iloc[:,-1], train_size=0.7, test_size=0.3, random_state = 42, stratify = df_iris_scores.iloc[:,-1])
         abs_file_path = f_getFilePath("data\\processed\\iris_train_x.csv")
         train_x.to_csv(abs_file_path, index = False, encoding='utf-8')
         abs_file_path = f_getFilePath("data\\processed\\iris_train_y.csv")
@@ -302,9 +305,7 @@ def main():
         test_y.to_csv(abs_file_path, header = ['species'],  index = False, encoding='utf-8')
         
         #Train model
-        print('\n\nMultinomial Logistic Model\n', file = outfile)
-        import models.train_model
-             
+        import models.train_model            
             
           
         # =============================================================================

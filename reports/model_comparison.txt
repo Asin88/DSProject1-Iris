@@ -1,0 +1,14 @@
+Model Comparison
+
+
+Model Name	Accuracy	ROC AUC
+MNLogit 	 0.324 		 0.662
+KNN 3 	 0.848 		 0.937
+KNN 5 	 0.866 		 0.944
+KNN 7 	 0.856 		 0.956
+Gaussian NB 	 0.829 		 0.963
+Unpruned CART 	 0.847 		 0.888
+Pruned CART 	 0.846 		 0.922
+Random Forest 	 0.846 		 0.939
+Pruned Random Forest 	 0.798 		 0.937
+Gradient Boosting 	 0.825 		 0.939
